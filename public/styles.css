@@ -1,0 +1,18 @@
+h1 {
+  text-align: center;
+}
+.index {
+  background-image:url("baltimore_ravens.gif");
+}
+
+
+
+title {
+  text-align: center;
+
+}
+
+h1, h2, h3, ol {
+  color: black;
+  text-align: center;
+}

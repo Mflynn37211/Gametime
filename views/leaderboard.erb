@@ -1,0 +1,21 @@
+
+<head>
+      <title>League Scoreboard</title>
+<link rel="stylesheet" href="styles.css">
+    </head>
+    <body class="index">
+      <h1>
+      <h2>  Leader Board </h2>
+        <h4>
+          <ol>
+          <h3>Win</h3>
+          <% @winnners.each do |team, score| %>
+          <ul><%= "#{team} ------ #{score}" %></ul>
+          <% end %>
+          <h3> Loss </h3>
+          <% @losses.each do |team, score| %>
+          <ul><%= "#{team} ------ #{score}" %></ul>
+          <% end %>
+          </ol>
+        </h4>
+    </body>
