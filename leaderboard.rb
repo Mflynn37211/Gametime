@@ -9,10 +9,10 @@ require 'sinatra/reloader'
 
 def team_info(team_name)
   teams = []
-  CSV.foreach(team_name, headers: true, header_converters: :symbol, converters: :integer) do |row|
+  CSV.foreach(team_name, headers: true, header_converters: :symbol, converters: :numeric) do |row|
     teams << row.to_hash
   end
-  teams
+    teams
 end
 
 def sort_teams(info)
@@ -42,7 +42,6 @@ get '/leaderboard' do
   won.each do |team_wins|
     team_win[team_wins] += 1
   end
-
 
   @teams.each do |team|
     if team[:away_score] > team[:home_score]

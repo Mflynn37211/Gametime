@@ -1,18 +1,29 @@
 h1 {
   text-align: center;
-}
-.index {
-  background-image:url("baltimore_ravens.gif");
-}
-
-
-
-title {
-  text-align: center;
-
+  font-size: 250%;
+  text-decoration: underline;
 }
 
-h1, h2, h3, ol {
+h2 {
   color: black;
   text-align: center;
+  font-weight: bold;
+  font-size: 175%;
+  text-decoration: underline;
+}
+
+ul {
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+body {
+  background-image:url("BAL.gif");
+   background-repeat: no-repeat;
+    background-attachment: scroll;
+     background-position: center;
+     background-color: grey;
+
 }
