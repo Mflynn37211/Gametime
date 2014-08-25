@@ -17,7 +17,7 @@ def team_info(team_name)
 end
 
 def sort_teams(info)
-  info.sort_by {|key, value| value}
+  info.sort_by {|key, value| -value}
 end
 
 ######### Routes ###########
@@ -48,7 +48,7 @@ get '/leaderboard' do
     team_loss[teamloss] += 1
   end
 
-  @winnners = sort_teams(team_win).reverse
-  @losses = sort_teams(team_loss).reverse
+  @winnners = sort_teams(team_win)
+  @losses = sort_teams(team_loss)
   erb :leaderboard
 end
