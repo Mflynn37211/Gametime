@@ -33,21 +33,15 @@ get '/leaderboard' do
   @teams.each do |team|
     if team[:away_score] > team[:home_score]
       won << team[:away_team]
+      lost << team[:home_team]
     elsif team[:away_score] < team[:home_score]
       won << team[:home_team]
+      lost << team[:away_team]
     end
   end
 
   won.each do |team_wins|
     team_win[team_wins] += 1
-  end
-
-  @teams.each do |team|
-    if team[:away_score] > team[:home_score]
-      lost << team[:home_team]
-    elsif team[:away_score] < team[:home_score]
-      lost << team[:away_team]
-    end
   end
 
   lost.each do |teamloss|
