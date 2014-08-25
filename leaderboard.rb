@@ -6,18 +6,18 @@ require 'sinatra/reloader'
 
 ##########Methods############
 
-def team_info(team_name)
+def team_info(game_csv)
   teams = []
 
-  CSV.foreach(team_name, headers: true, header_converters: :symbol, converters: :numeric) do |row|
+  CSV.foreach(game_csv, headers: true, header_converters: :symbol, converters: :numeric) do |row|
     teams << row.to_hash
   end
 
   teams
 end
 
-def sort_teams(info)
-  info.sort_by {|key, value| -value}
+def sort_teams(team_records)
+  team_records.sort_by {|key, value| -value}
 end
 
 ######### Routes ###########
