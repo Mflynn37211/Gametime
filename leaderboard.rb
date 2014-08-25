@@ -6,22 +6,21 @@ require 'sinatra/reloader'
 
 ##########Methods############
 
-
-def team_info(team_name)
+def team_info(game_csv)
   teams = []
-  CSV.foreach(team_name, headers: true, header_converters: :symbol, converters: :numeric) do |row|
+
+  CSV.foreach(game_csv, headers: true, header_converters: :symbol, converters: :numeric) do |row|
     teams << row.to_hash
   end
-    teams
+
+  teams
 end
 
-def sort_teams(info)
-  info.sort_by {|key, value| value}
+def sort_teams(team_records)
+  team_records.sort_by {|key, value| -value}
 end
 
-
-
-
+######### Routes ###########
 
 get '/leaderboard' do
   @teams = team_info("teams.csv")
@@ -30,12 +29,13 @@ get '/leaderboard' do
   won = []
   lost = []
 
-
   @teams.each do |team|
     if team[:away_score] > team[:home_score]
       won << team[:away_team]
-    else team[:away_score] < team[:home_score]
-        won << team[:home_team]
+      lost << team[:home_team]
+    elsif team[:away_score] < team[:home_score]
+      won << team[:home_team]
+      lost << team[:away_team]
     end
   end
 
@@ -43,19 +43,11 @@ get '/leaderboard' do
     team_win[team_wins] += 1
   end
 
-  @teams.each do |team|
-    if team[:away_score] > team[:home_score]
-      lost << team[:home_team]
-    else team[:away_score] < team[:home_score]
-      lost << team[:away_team]
-    end
-  end
-
   lost.each do |teamloss|
     team_loss[teamloss] += 1
   end
 
-  @winnners = sort_teams(team_win).reverse
-  @losses = sort_teams(team_loss).reverse
+  @winnners = sort_teams(team_win)
+  @losses = sort_teams(team_loss)
   erb :leaderboard
 end
