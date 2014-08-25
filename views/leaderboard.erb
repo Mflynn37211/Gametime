@@ -10,13 +10,17 @@
     <h1>Leader Board</h1>
 
     <h2>Wins</h2>
-    <% @winnners.each do |team, score| %>
-      <ul><%= "#{team} ------ #{score}" %></ul>
-    <% end %>
+    <ul>
+      <% @winnners.each do |team, score| %>
+        <li><%= "#{team} ------ #{score}" %></li>
+      <% end %>
+    </ul>
 
     <h2> Losses </h2>
-    <% @losses.each do |team, score| %>
-      <ul><%= "#{team} ------ #{score}" %></ul>
-    <% end %>
+    <ul>
+      <% @losses.each do |team, score| %>
+        <li><%= "#{team} ------ #{score}" %></li>
+      <% end %>
+    </ul>
   </body>
 </html>
