@@ -29,7 +29,6 @@ get '/leaderboard' do
   won = []
   lost = []
 
-
   @teams.each do |team|
     if team[:away_score] > team[:home_score]
       won << team[:away_team]
