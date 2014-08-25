@@ -1,19 +1,22 @@
+<!DOCTYPE HTML>
 
-<head>
-      <title>League Scoreboard</title>
-<link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
+<html>
+  <head>
+    <title>League Scoreboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
 
-      <h1>  Leader Board </h1>
-          <h2>Wins</h2>
-            <% @winnners.each do |team, score| %>
-              <ul><%= "#{team} ------ #{score}" %></ul>
-            <% end %>
-          <h2> Losses </h2>
-            <% @losses.each do |team, score| %>
-              <ul><%= "#{team} ------ #{score}" %></ul>
-          <% end %>
+    <h1>Leader Board</h1>
 
+    <h2>Wins</h2>
+    <% @winnners.each do |team, score| %>
+      <ul><%= "#{team} ------ #{score}" %></ul>
+    <% end %>
 
-    </body>
+    <h2> Losses </h2>
+    <% @losses.each do |team, score| %>
+      <ul><%= "#{team} ------ #{score}" %></ul>
+    <% end %>
+  </body>
+</html>

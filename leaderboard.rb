@@ -6,22 +6,21 @@ require 'sinatra/reloader'
 
 ##########Methods############
 
-
 def team_info(team_name)
   teams = []
+
   CSV.foreach(team_name, headers: true, header_converters: :symbol, converters: :numeric) do |row|
     teams << row.to_hash
   end
-    teams
+
+  teams
 end
 
 def sort_teams(info)
   info.sort_by {|key, value| value}
 end
 
-
-
-
+######### Routes ###########
 
 get '/leaderboard' do
   @teams = team_info("teams.csv")
@@ -35,7 +34,7 @@ get '/leaderboard' do
     if team[:away_score] > team[:home_score]
       won << team[:away_team]
     else team[:away_score] < team[:home_score]
-        won << team[:home_team]
+      won << team[:home_team]
     end
   end
 
